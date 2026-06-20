@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SentinelRx — XVI Health Intelligence</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red-900:    #5a0000;
+      --red-800:    #7a0000;
+      --red-700:    #8B0000;
+      --red-600:    #a30000;
+      --red-500:    #c20000;
+      --red-400:    #e03030;
+      --red-bright: #ff3333;
+      --amber:      #d9a840;
+      --amber-bg:   rgba(138,96,16,0.14);
+      --amber-border: #8a6010;
+      --bg:         #0e0c0c;
+      --bg-card:    #161212;
+      --bg-raised:  #1d1818;
+      --border:     #2e2424;
+      --border-light: #3d2f2f;
+      --text-primary:   #f0ebe8;
+      --text-secondary: #bdb0ac;
+      --text-muted:     #7a6868;
+      --text-dim:       #4a3a3a;
+      --font-display: 'Bebas Neue', 'Impact', sans-serif;
+      --font-ui:      'Barlow Condensed', sans-serif;
+      --font-body:    'Barlow', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.85;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.5) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── TOPBAR ─── */
+    .topbar {
+      width: 100%;
+      background: #0a0808;
+      border-bottom: 2px solid var(--red-700);
+      height: 72px;
+      padding: 0 48px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 24px rgba(139,0,0,0.25);
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand-logo {
+      height: 44px;
+      width: auto;
+      filter: drop-shadow(0 0 10px rgba(194,0,0,0.5));
+      flex-shrink: 0;
+    }
+
+    .brand-logo-fallback {
+      height: 44px;
+      width: 44px;
+      border: 2px solid var(--red-700);
+      border-radius: 6px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--red-bright);
+      filter: drop-shadow(0 0 10px rgba(194,0,0,0.5));
+      flex-shrink: 0;
+    }
+
+    .brand-divider {
+      width: 2px;
+      height: 36px;
+      background: var(--red-700);
+      flex-shrink: 0;
+    }
+
+    .brand-text { display: flex; flex-direction: column; gap: 1px; }
+
+    .tool-name {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      letter-spacing: 0.18em;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+
+    .tool-sub {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--red-600);
+      text-transform: uppercase;
+    }
+
+    /* ─── DISCLAIMER BANNER (always visible) ─── */
+    .disclaimer-banner {
+      width: 100%;
+      background: #1a0800;
+      border-bottom: 2px solid #8a6010;
+      padding: 10px 48px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: sticky;
+      top: 72px;
+      z-index: 98;
+    }
+
+    .disclaimer-banner-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .disclaimer-banner-text {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--amber);
+      text-transform: uppercase;
+    }
+
+    .disclaimer-banner-link {
+      color: var(--amber);
+      cursor: pointer;
+      text-decoration: underline;
+      margin-left: 8px;
+      font-size: 12px;
+    }
+
+    /* ─── TAB NAVIGATION ─── */
+    .tab-nav {
+      display: flex;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 0 64px;
+      position: sticky;
+      top: 116px;
+      z-index: 97;
+    }
+
+    .tab-btn {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 16px 28px;
+      cursor: pointer;
+      transition: color 200ms ease, border-color 200ms ease;
+    }
+
+    .tab-btn:hover { color: var(--text-secondary); }
+    .tab-btn.active { color: var(--red-bright); border-bottom-color: var(--red-500); }
+
+    .tab-btn.tab-disclaimer { color: var(--amber); }
+    .tab-btn.tab-disclaimer.active { color: var(--amber); border-bottom-color: var(--amber-border); }
+    .tab-btn.tab-disclaimer:hover { color: #f0c060; }
+
+    /* ─── CONTENT ─── */
+    .content {
+      padding: 48px 64px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+
+    /* ─── SECTION HEADERS ─── */
+    .sec-label {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      letter-spacing: 0.1em;
+      color: var(--red-bright);
+      text-shadow: 0 0 20px rgba(255,51,51,0.2);
+      border-bottom: 1px solid var(--red-900);
+      padding-bottom: 0.6rem;
+      margin-bottom: 1rem;
+      margin-top: 2.4rem;
+    }
+
+    .sec-label:first-child { margin-top: 0; }
+    .sec-label-amber {
+      color: var(--amber);
+      text-shadow: 0 0 20px rgba(217,168,64,0.2);
+      border-bottom-color: var(--amber-border);
+    }
+
+    /* ─── CARDS ─── */
+    .section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.6rem 1.8rem;
+      margin-bottom: 1.2rem;
+      transition: border-color 250ms ease;
+    }
+
+    .section:hover { border-color: var(--border-light); }
+
+    /* ─── CALLOUTS ─── */
+    .callout {
+      border-left: 4px solid var(--red-700);
+      background: linear-gradient(90deg, rgba(139,0,0,0.14) 0%, rgba(139,0,0,0.03) 60%);
+      border-radius: 0 8px 8px 0;
+      padding: 1.2rem 1.6rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .callout-label {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      color: var(--red-bright);
+      margin-bottom: 0.5rem;
+    }
+
+    .callout-amber {
+      border-left-color: var(--amber-border);
+      background: linear-gradient(90deg, rgba(138,96,16,0.14) 0%, rgba(138,96,16,0.03) 60%);
+    }
+
+    .callout-amber .callout-label { color: var(--amber); }
+
+    /* ─── DISCLAIMER BOX ─── */
+    .disclaimer-box {
+      background: #1a0800;
+      border: 2px solid var(--amber-border);
+      border-radius: 10px;
+      padding: 2rem 2rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .disclaimer-box .sec-label-amber { margin-top: 0; }
+
+    /* ─── NEXT STEP BLOCK ─── */
+    .next-step {
+      background: var(--bg-raised);
+      border: 1px solid var(--red-700);
+      border-left: 4px solid var(--red-500);
+      border-radius: 10px;
+      padding: 1.4rem 1.8rem;
+      box-shadow: inset 0 0 28px rgba(139,0,0,0.06);
+      margin-bottom: 1.2rem;
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--red-800), transparent);
+      opacity: 0.7;
+      margin: 1.6rem 0;
+    }
+
+    /* ─── TABLES ─── */
+    table { width: 100%; border-collapse: collapse; font-size: 16px; margin-bottom: 1.2rem; }
+    th { font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); padding: 10px 14px; border-bottom: 1px solid var(--border); text-align: left; }
+    td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.015); }
+
+    /* ─── BADGES ─── */
+    .badge { font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; padding: 4px 10px; border-radius: 4px; white-space: nowrap; display: inline-block; }
+    .badge-safe    { background: rgba(26,122,85,0.15);  color: #6dcc9e; border: 1px solid rgba(26,122,85,0.4); }
+    .badge-caution { background: rgba(154,112,16,0.15); color: #d9a840; border: 1px solid rgba(154,112,16,0.4); }
+    .badge-stop    { background: rgba(139,0,0,0.2);     color: #f07070; border: 1px solid rgba(200,0,0,0.4); }
+    .badge-call    { background: rgba(74,58,138,0.2);   color: #aba2e8; border: 1px solid rgba(74,58,138,0.45); }
+
+    /* ─── NUMBERED STEPS ─── */
+    .steps { counter-reset: step; list-style: none; padding: 0; }
+    .steps li { counter-increment: step; display: flex; gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+    .steps li:last-child { border-bottom: none; }
+    .steps li::before { content: counter(step); font-family: var(--font-display); font-size: 1.3rem; color: var(--red-bright); width: 28px; flex-shrink: 0; line-height: 1.4; }
+
+    /* ─── BIG ANSWER BOXES ─── */
+    .answer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-bottom: 1.4rem; }
+
+    .answer-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem;
+      transition: border-color 250ms ease;
+    }
+
+    .answer-card:hover { border-color: var(--border-light); }
+
+    .answer-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; line-height: 1; }
+
+    .answer-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      letter-spacing: 0.08em;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .answer-desc { font-size: 16px; color: var(--text-secondary); line-height: 1.6; }
+
+    /* ─── STAT GRID ─── */
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 1.4rem; }
+    .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1.4rem; text-align: center; }
+    .stat-num { font-family: var(--font-display); font-size: 2.8rem; color: var(--red-bright); text-shadow: 0 0 28px rgba(255,51,51,0.3); letter-spacing: 0.04em; display: block; line-height: 1; }
+    .stat-label { font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-top: 8px; display: block; }
+
+    /* ─── SCREENSHOT PLACEHOLDER ─── */
+    .screenshot-placeholder { background: var(--bg-raised); border: 1px dashed var(--border-light); border-radius: 8px; padding: 48px 32px; text-align: center; margin: 1.2rem 0; }
+    .screenshot-label { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.5rem; }
+    .screenshot-desc { font-family: var(--font-ui); font-size: 14px; color: var(--text-dim); letter-spacing: 0.04em; }
+
+    /* ─── LABEL PHOTOS ─── */
+    .label-img-wrap { margin: 1.2rem 0; }
+    .label-img { width: 100%; max-height: 360px; object-fit: contain; border-radius: 8px; border: 1px solid var(--border); background: #0a0808; display: block; }
+    .label-img-caption { font-family: var(--font-ui); font-size: 13px; letter-spacing: 0.05em; color: var(--text-muted); text-align: center; padding: 6px 0 0; }
+
+    /* ─── OUTPUT BLOCK ─── */
+    .output-block { background: #0a0808; border: 1px solid var(--border); border-left: 3px solid var(--red-700); border-radius: 8px; padding: 1.2rem 1.6rem; font-family: 'Courier New', monospace; font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin: 1rem 0; white-space: pre-wrap; }
+
+    /* ─── AUDIT LOG BLOCK ─── */
+    .audit-block { background: #080c0a; border: 1px solid #1a3a2a; border-left: 3px solid #1a7a55; border-radius: 8px; padding: 1.2rem 1.6rem; font-family: 'Courier New', monospace; font-size: 13px; color: #6dcc9e; line-height: 1.7; margin: 1rem 0; white-space: pre-wrap; }
+
+    /* ─── FOOTER ─── */
+    .footer { font-family: var(--font-ui); font-size: 13px; font-weight: 500; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; gap: 12px; padding: 32px 64px; margin-top: 48px; position: relative; z-index: 1; }
+    .footer::before, .footer::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .topbar { padding: 0 20px; height: 60px; }
+      .disclaimer-banner { padding: 8px 20px; top: 60px; }
+      .tab-nav { padding: 0 20px; overflow-x: auto; top: 104px; }
+      .content { padding: 32px 20px; }
+      .footer { padding: 24px 20px; }
+      .tool-name { font-size: 1.5rem; }
+    }
+
+    strong { color: var(--text-primary); font-weight: 600; }
+    p { margin-bottom: 1rem; }
+    p:last-child { margin-bottom: 0; }
+    code { font-family: 'Courier New', monospace; font-size: 14px; color: var(--text-muted); background: rgba(255,255,255,0.04); padding: 2px 6px; border-radius: 3px; }
+    a { color: var(--red-400); }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ TOPBAR ═══ -->
+  <div class="topbar">
+    <img class="brand-logo"
+         src="assets/XVI_logo.png"
+         alt="XVI"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="brand-logo-fallback">XVI</div>
+    <div class="brand-divider"></div>
+    <div class="brand-text">
+      <div class="tool-name">SENTINELRX</div>
+      <div class="tool-sub">XVI Health Intelligence · OTC Safety Operator</div>
+    </div>
+  </div>
+
+  <!-- ═══ PERSISTENT DISCLAIMER BANNER ═══ -->
+  <div class="disclaimer-banner">
+    <span class="disclaimer-banner-icon">⚠️</span>
+    <span class="disclaimer-banner-text">
+      United States Only — FDA Beers Criteria 2023 · Not valid outside the US
+      <span class="disclaimer-banner-link" onclick="switchTab('disclaimer')">Read full disclaimer →</span>
+    </span>
+  </div>
+
+  <!-- ═══ TAB NAVIGATION ═══ -->
+  <nav class="tab-nav" role="tablist">
+    <button class="tab-btn active"        data-tab="overview"      role="tab">Overview</button>
+    <button class="tab-btn"               data-tab="installation"  role="tab">Installation</button>
+    <button class="tab-btn"               data-tab="configuration" role="tab">Configuration</button>
+    <button class="tab-btn"               data-tab="examples"      role="tab">Examples</button>
+    <button class="tab-btn tab-disclaimer" data-tab="disclaimer"   role="tab">⚠ Disclaimer</button>
+  </nav>
+
+  <!-- ═══ CONTENT ═══ -->
+  <main class="content">
+
+    <!-- ══════════════════════════════════════════════
+         OVERVIEW
+    ══════════════════════════════════════════════ -->
+    <section class="tab-pane active" id="tab-overview" role="tabpanel">
+
+      <p class="sec-label">What SentinelRx Does</p>
+
+      <div class="section">
+        <p>You are caring for an elderly person who takes multiple prescription medications. Every time you reach for an over-the-counter product — a pain reliever, a cold medicine, a sleep aid, a supplement — you face a question no one has prepared you to answer: <strong>is this safe with everything they're already taking?</strong></p>
+        <p>SentinelRx answers that question. You describe the product or share a photo of the label. It checks the ingredients against your patient's medication list and returns one clear decision — every time.</p>
+      </div>
+
+      <div class="divider"></div>
+      <p class="sec-label">The Four Answers</p>
+
+      <div class="answer-grid">
+        <div class="answer-card">
+          <span class="answer-icon">✅</span>
+          <div class="answer-title">SAFE TO TAKE</div>
+          <div class="answer-desc">No known problem with their current medications. No FDA flag for their age group. OK to give at the stated dose.</div>
+        </div>
+        <div class="answer-card">
+          <span class="answer-icon">⚠️</span>
+          <div class="answer-title">TAKE WITH CAUTION</div>
+          <div class="answer-desc">There is a concern — but it can be managed. SentinelRx tells you exactly what to watch for or how to time the dose.</div>
+        </div>
+        <div class="answer-card">
+          <span class="answer-icon">🚫</span>
+          <div class="answer-title">DO NOT TAKE</div>
+          <div class="answer-desc">Clear risk. Do not give it. A safer alternative is always suggested when one exists.</div>
+        </div>
+        <div class="answer-card">
+          <span class="answer-icon">📞</span>
+          <div class="answer-title">CALL PHARMACIST FIRST</div>
+          <div class="answer-desc">The label is too complex or the interaction too ambiguous to decide safely. Call before giving anything.</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <p class="sec-label">How to Use It — Three Steps</p>
+
+      <div class="section">
+        <ol class="steps">
+          <li>
+            <div>
+              <strong>Find the active ingredients.</strong>
+              Look at the back of the box or bottle. Find the section labeled "Active Ingredients" — it lists what the product actually contains and at what dose. That's what SentinelRx reads.
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Tell SentinelRx the product name and its active ingredients.</strong>
+              Type it out or share a photo of the label in the conversation. Either works.
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Read the decision and act on it.</strong>
+              SentinelRx tells you exactly what to do — and why. No medical knowledge needed to understand the answer.
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="divider"></div>
+      <p class="sec-label">Why This Matters</p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <span class="stat-num">350K</span>
+          <span class="stat-label">Elderly Americans hospitalized annually from OTC drug events</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">$14K+</span>
+          <span class="stat-label">Average cost per preventable hospitalization</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">1991</span>
+          <span class="stat-label">Year the FDA first published the Beers Criteria — the data has existed for decades</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <p>The assumption that <strong>"it's over-the-counter, so it's safe"</strong> is one of the leading causes of preventable drug harm in elderly patients. Products sold in every pharmacy — Tylenol PM, Benadryl, Aleve — carry serious risks for patients on common prescriptions. The risks are documented. The information exists. It just hasn't been accessible at the moment a caregiver is standing in the pharmacy aisle.</p>
+        <p>SentinelRx puts that information in your hands, before the purchase, in under 60 seconds.</p>
+      </div>
+
+      <div class="divider"></div>
+      <p class="sec-label">3 Products That Catch Most Caregivers Off Guard</p>
+
+      <div class="section">
+        <table>
+          <thead>
+            <tr><th>Product</th><th>The trap</th><th>Decision</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Tylenol PM / Advil PM / Aleve PM</strong></td>
+              <td>Contains diphenhydramine — FDA Beers Criteria Class I flag for anyone over 65. Causes confusion, fall risk, urinary retention. The "PM" label doesn't say this.</td>
+              <td><span class="badge badge-stop">🚫 DO NOT TAKE</span></td>
+            </tr>
+            <tr>
+              <td><strong>Benadryl / ZzzQuil / Unisom</strong></td>
+              <td>Same active ingredient (diphenhydramine or doxylamine), same risk. Sold as "allergy" or "natural sleep" — the label doesn't change the compound.</td>
+              <td><span class="badge badge-stop">🚫 DO NOT TAKE</span></td>
+            </tr>
+            <tr>
+              <td><strong>Aleve (naproxen)</strong></td>
+              <td>An NSAID — dangerous with blood thinners, blood pressure medications, and diuretics. 12-hour half-life means prolonged exposure to GI and kidney risk.</td>
+              <td><span class="badge badge-stop">🚫 DO NOT TAKE</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="divider"></div>
+      <p class="sec-label">Limitations — Know These Before You Rely on SentinelRx</p>
+
+      <div class="callout callout-amber">
+        <div class="callout-label">United States Only</div>
+        <p>SentinelRx is built on US regulations — the FDA Beers Criteria 2023 and US drug classifications. It is not valid for patients or products outside the United States. See the <strong>Disclaimer</strong> tab for full details.</p>
+      </div>
+
+      <div class="callout callout-amber">
+        <div class="callout-label">One Patient at a Time</div>
+        <p>SentinelRx operates on a single active patient profile. Managing multiple patients is not supported in this version.</p>
+      </div>
+
+      <div class="callout callout-amber">
+        <div class="callout-label">Profile Accuracy Is Everything</div>
+        <p>If a prescription was changed and the profile wasn't updated, SentinelRx will use outdated data. Update the profile the same day anything changes — especially after a hospital stay.</p>
+      </div>
+
+      <div class="callout callout-amber">
+        <div class="callout-label">OTC Products Only</div>
+        <p>Prescription medications, injectables, and medical devices are outside scope. SentinelRx does not adjust existing prescriptions or evaluate prescription drug combinations.</p>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         INSTALLATION
+    ══════════════════════════════════════════════ -->
+    <section class="tab-pane" id="tab-installation" role="tabpanel">
+
+      <p class="sec-label">What You Need</p>
+
+      <div class="section">
+        <p>A <strong>Claude.ai account</strong> with Projects access (Claude Pro or Team plan). No technical skills required beyond basic file management — if you can move files from a folder to a website, you can install SentinelRx.</p>
+      </div>
+
+      <div class="divider"></div>
+      <p class="sec-label">Setup — One Time Only</p>
+
+      <div class="section">
+        <ol class="steps">
+          <li>
+            <div>
+              <strong>Create a new Claude Project.</strong><br>
+              Go to <a href="https://claude.ai" target="_blank">claude.ai</a> → Projects → New Project. Name it after your patient or call it "SentinelRx."
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Upload the SentinelRx folder contents to the Project.</strong><br>
+              In Project Settings → Project Knowledge, upload all files: <code>CLAUDE.md</code>, <code>identity.md</code>, <code>rules.md</code>, <code>examples.md</code>, and everything inside <code>reference/</code>, <code>templates/</code>, and <code>patients/</code>.
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Set up the patient profile.</strong><br>
+              Open <code>templates/patient-profile-template.md</code>. Fill it in completely — name, age, all current prescriptions, known conditions, allergies. Save it as <code>patients/[patient-name].md</code> and upload it to the Project.
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Test it.</strong><br>
+              Start a conversation in the Project. Type: <em>"Active ingredients: Acetaminophen 500mg, Diphenhydramine HCl 25mg. Product: Tylenol PM."</em><br>
+              You should get <span class="badge badge-stop">🚫 DO NOT TAKE</span> with a Beers Criteria citation. If you do, the operator is working.
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="divider"></div>
+      <p class="sec-label">Keeping It Current</p>
+
+      <div class="next-step">
+        <div style="font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.12em; color: var(--red-bright); margin-bottom: 0.8rem;">Update the patient profile immediately after:</div>
+        <ul style="padding-left: 1.2rem; color: var(--text-secondary); line-height: 2;">
+          <li>Any prescription is added, changed in dose, or stopped</li>
+          <li>Any doctor, specialist, or pharmacist visit</li>
+          <li>Any ER visit or hospital stay</li>
+          <li>Quarterly lab results that lead to a medication adjustment</li>
+        </ul>
+        <br>
+        <p style="color: var(--text-secondary);">Edit <code>patients/[patient-name].md</code>, update the <code>LAST_UPDATED</code> date at the top, and re-upload it to the Project. SentinelRx checks this date on every scan and warns you if it's stale.</p>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         CONFIGURATION
+    ══════════════════════════════════════════════ -->
+    <section class="tab-pane" id="tab-configuration" role="tabpanel">
+
+      <p class="sec-label">Patient Profile Fields</p>
+
+      <div class="section">
+        <p>The patient profile is the only thing that makes SentinelRx specific to your patient. Every field below feeds the decision logic directly — incomplete profiles produce less reliable decisions.</p>
+
+        <table>
+          <thead>
+            <tr><th>Field</th><th>Why it matters</th><th>Required</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>LAST_UPDATED</strong></td><td>SentinelRx shows a staleness warning when this date exceeds the threshold. Update every time anything changes.</td><td>Required</td></tr>
+            <tr><td><strong>STALENESS_THRESHOLD_DAYS</strong></td><td>Default 14 days. How many days before SentinelRx flags the profile as potentially outdated. Reduce to 7 for patients with frequent prescription changes.</td><td>Optional</td></tr>
+            <tr><td><strong>Age</strong></td><td>FDA Beers Criteria applies at 65+. Age also triggers dosing adjustments for patients over 80.</td><td>Required</td></tr>
+            <tr><td><strong>Current prescriptions</strong></td><td>Every drug, dose, and frequency — this is the primary interaction check. Missing a drug means missing a potential conflict.</td><td>Required</td></tr>
+            <tr><td><strong>Known conditions</strong></td><td>Enables condition-specific rules: CKD → NSAID risk; heart failure → NSAID/fluid risk; hypertension → decongestant risk.</td><td>Required</td></tr>
+            <tr><td><strong>Known allergies</strong></td><td>Cross-referenced on every scan.</td><td>Required</td></tr>
+            <tr><td><strong>OTC products already in regular use</strong></td><td>Required to calculate total daily acetaminophen — hidden in many combination products.</td><td>Required</td></tr>
+            <tr><td><strong>Kidney / liver function</strong></td><td>Activates drug clearance rules critical for metformin, NSAIDs, and digoxin.</td><td>Recommended</td></tr>
+            <tr><td><strong>Fall risk</strong></td><td>Adds a warning to any medication that increases sedation or dizziness.</td><td>Recommended</td></tr>
+            <tr><td><strong>Recent hospitalizations</strong></td><td>Context for the staleness warning — any hospitalization is a high-risk change window.</td><td>Recommended</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="divider"></div>
+      <p class="sec-label">Staleness Threshold — How Often to Update</p>
+
+      <div class="section">
+        <p>The <code>STALENESS_THRESHOLD_DAYS</code> value tells SentinelRx how long to trust the profile before flagging it as potentially outdated. The default is <strong>14 days</strong>.</p>
+
+        <table>
+          <thead>
+            <tr><th>Situation</th><th>Recommended setting</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Stable medications, changes are infrequent</td><td>14 days (default)</td></tr>
+            <tr><td>On warfarin — INR checked every 2–4 weeks with dose adjustments</td><td>7 days</td></tr>
+            <tr><td>Within 30 days of a hospitalization</td><td>3–7 days</td></tr>
+            <tr><td>Multiple active conditions, frequent lab reviews</td><td>7 days</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout">
+          <div class="callout-label">The Gap No Setting Can Cover</div>
+          <p>A staleness threshold catches calendar-based drift. It cannot catch a prescription change that happened today. This is why SentinelRx appends a hospitalization reminder to <em>every</em> scan — because the most dangerous moment is right after a hospital discharge, when medications often change significantly and caregivers are most exhausted.</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <p class="sec-label">Audit Trail — Keeping a Scan History</p>
+
+      <div class="section">
+        <p>After every scan, SentinelRx automatically writes a log entry to <code>audit/scan-log.md</code>. No action required — the file is updated before the response is complete.</p>
+
+        <div class="audit-block">━━━ SCAN LOG ENTRY ━━━
+Date      : 2026-06-12 14:33
+Patient   : Margaret Chen
+Product   : Tylenol PM
+Ingredients: Acetaminophen 500mg, Diphenhydramine HCl 25mg
+Decision  : 🚫 DO NOT TAKE
+Reason    : Diphenhydramine — Beers Criteria Class I for 65+
+Profile updated : 2026-05-29
+━━━━━━━━━━━━━━━━━━━━━</div>
+
+        <p>This builds a human-readable history of every check — what was scanned, what was decided, and what the profile looked like at the time. The log can be shown to a doctor, pharmacist, or other caregiver at any time.</p>
+      </div>
+
+      <div class="divider"></div>
+      <p class="sec-label">Reference Files — Pre-Loaded, Rarely Changed</p>
+
+      <div class="section">
+        <table>
+          <thead>
+            <tr><th>File</th><th>What it contains</th><th>When to update</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>beers-criteria-summary.md</code></td><td>FDA Beers Criteria 2023 — OTC-relevant drug classes and disease interactions</td><td>When AGS publishes an updated Beers Criteria (every ~3 years)</td></tr>
+            <tr><td><code>risk-reference.md</code></td><td>OTC × prescription interaction matrix; products commonly assumed safe but flagged</td><td>If a new confirmed interaction is identified</td></tr>
+            <tr><td><code>brand-ingredient-map.md</code></td><td>Active ingredients for common OTC brands — Tylenol PM, NyQuil, Excedrin, etc.</td><td>When manufacturers change formulations — verify against current packaging</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         EXAMPLES
+    ══════════════════════════════════════════════ -->
+    <section class="tab-pane" id="tab-examples" role="tabpanel">
+
+      <p style="font-size: 19px; font-weight: 500; color: var(--text-primary); line-height: 1.7; margin-bottom: 1.4rem;">Five real-world edge cases — each one shows a moment where the common assumption was wrong and SentinelRx caught it.</p>
+
+      <!-- Example 1 -->
+      <p class="sec-label">Example 1 — The PM Suffix Trap</p>
+
+      <div class="section">
+        <p><strong>Situation:</strong> Caregiver picks up Tylenol PM for nighttime pain. Assumes it's just regular Tylenol with a sleep component added. Patient is 86, on digoxin and furosemide.</p>
+
+        <div class="label-img-wrap">
+          <img class="label-img"
+               src="assets/example1-tylenol-pm.jpeg"
+               alt="Tylenol PM label — Acetaminophen 500mg, Diphenhydramine HCl 25mg"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='none'; this.parentElement.querySelector('.screenshot-placeholder').style.display='block'">
+          <div class="label-img-caption">Tylenol PM · Acetaminophen 500mg · Diphenhydramine HCl 25mg</div>
+          <div class="screenshot-placeholder" style="display:none">
+            <div class="screenshot-label">ADD LABEL PHOTO</div>
+            <div class="screenshot-desc">Place <code>assets/example1-tylenol-pm.jpg</code> in your assets folder</div>
+          </div>
+        </div>
+
+        <div class="output-block">DECISION: 🚫 DO NOT TAKE
+
+PRODUCT: Tylenol PM
+ACTIVE INGREDIENTS: Acetaminophen 500mg, Diphenhydramine HCl 25mg
+
+REASON: Diphenhydramine (the "PM" sleep component) is a Beers Criteria
+Class I risk for all patients 65+. Causes confusion, fall risk, and
+urinary retention. No dose is safe for this age group.
+
+ACTION: The pain component (acetaminophen 500mg) is safe on its own.
+Use regular Tylenol instead. For sleep issues, speak with the physician.
+
+━━━ SCAN LOG ENTRY ━━━
+Date      : 2026-06-12 09:41
+Patient   : Margaret Chen
+Product   : Tylenol PM
+Ingredients: Acetaminophen 500mg, Diphenhydramine HCl 25mg
+Decision  : 🚫 DO NOT TAKE
+Reason    : Diphenhydramine — Beers Criteria Class I for 65+
+Profile updated : 2026-05-29
+━━━━━━━━━━━━━━━━━━━━━</div>
+      </div>
+
+      <!-- Example 2 -->
+      <p class="sec-label">Example 2 — The Natural Supplement Trap</p>
+
+      <div class="section">
+        <p><strong>Situation:</strong> Caregiver buys high-dose fish oil (1200mg), marketed as heart-healthy. Patient is on warfarin. The fish oil label says nothing about drug interactions.</p>
+
+        <div class="label-img-wrap">
+          <img class="label-img"
+               src="assets/example2-fish-oil.png"
+               alt="Fish oil supplement label — Omega-3 Fatty Acids 1200mg"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='none'; this.parentElement.querySelector('.screenshot-placeholder').style.display='block'">
+          <div class="label-img-caption">Fish Oil 1200mg · Omega-3 Fatty Acids (EPA 360mg · DHA 240mg)</div>
+          <div class="screenshot-placeholder" style="display:none">
+            <div class="screenshot-label">ADD LABEL PHOTO</div>
+            <div class="screenshot-desc">Place <code>assets/example2-fish-oil.jpg</code> in your assets folder</div>
+          </div>
+        </div>
+
+        <div class="output-block">DECISION: 🚫 DO NOT TAKE
+
+PRODUCT: Fish Oil 1200mg
+ACTIVE INGREDIENTS: Omega-3 fatty acids 1200mg (EPA + DHA)
+
+REASON: Fish oil at this dose has blood-thinning properties. Patient is
+on warfarin. Combining them raises bleeding risk and can raise INR
+unpredictably — which warfarin monitoring is designed to prevent.
+
+ACTION: Do not give without physician or pharmacist approval first.
+━━━ SCAN LOG ENTRY ━━━
+Date      : 2026-06-12 10:15
+Patient   : Margaret Chen
+Product   : Fish Oil 1200mg
+Ingredients: Omega-3 fatty acids 1200mg
+Decision  : 🚫 DO NOT TAKE
+Reason    : Anticoagulant effect — warfarin + high-dose omega-3 = bleeding risk
+Profile updated : 2026-05-29
+━━━━━━━━━━━━━━━━━━━━━</div>
+      </div>
+
+      <!-- Example 3 -->
+      <p class="sec-label">Example 3 — Safe, But Only at the Right Time</p>
+
+      <div class="section">
+        <p><strong>Situation:</strong> Caregiver asks about Tums for heartburn. Patient takes levothyroxine every morning. Not a hard stop — but timing matters.</p>
+
+        <div class="label-img-wrap">
+          <img class="label-img"
+               src="assets/example3-Tums.png"
+               alt="Tums Extra Strength label — Calcium carbonate 750mg"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='none'; this.parentElement.querySelector('.screenshot-placeholder').style.display='block'">
+          <div class="label-img-caption">Tums Extra Strength · Calcium carbonate 750mg</div>
+          <div class="screenshot-placeholder" style="display:none">
+            <div class="screenshot-label">ADD LABEL PHOTO</div>
+            <div class="screenshot-desc">Place <code>assets/example3-tums.jpg</code> in your assets folder</div>
+          </div>
+        </div>
+
+        <div class="output-block">DECISION: ⚠️ TAKE WITH CAUTION
+
+PRODUCT: Tums Extra Strength
+ACTIVE INGREDIENTS: Calcium carbonate 750mg
+
+REASON: Patient takes levothyroxine every morning. Calcium carbonate
+binds to the thyroid medication in the stomach and reduces how much
+is absorbed. This is a timing issue, not a prohibition.
+
+ACTION: Do not take Tums within 4 hours of the morning levothyroxine
+dose. Afternoon or evening is safe. 1–2 tablets at standard dose.
+━━━ SCAN LOG ENTRY ━━━
+Date      : 2026-06-12 11:02
+Patient   : Margaret Chen
+Product   : Tums Extra Strength
+Ingredients: Calcium carbonate 750mg
+Decision  : ⚠️ TAKE WITH CAUTION
+Reason    : Timing — calcium impairs levothyroxine absorption within 4h
+Profile updated : 2026-05-29
+━━━━━━━━━━━━━━━━━━━━━</div>
+      </div>
+
+      <!-- Example 4 -->
+      <p class="sec-label">Example 4 — Hidden Acetaminophen Buildup</p>
+
+      <div class="section">
+        <p><strong>Situation:</strong> Patient already takes Excedrin Extra Strength for headaches. Caregiver considers adding regular Tylenol for back pain the same afternoon — not realizing Excedrin already contains acetaminophen.</p>
+
+        <div class="label-img-wrap">
+          <img class="label-img"
+               src="assets/example4-excedrin.jpg"
+               alt="Excedrin Extra Strength and Tylenol Regular Strength labels side by side"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='none'; this.parentElement.querySelector('.screenshot-placeholder').style.display='block'">
+          <div class="label-img-caption">Excedrin Extra Strength · Acetaminophen 250mg + Aspirin 250mg + Caffeine 65mg &nbsp;|&nbsp; Tylenol Regular Strength · Acetaminophen 325mg</div>
+          <div class="screenshot-placeholder" style="display:none">
+            <div class="screenshot-label">ADD LABEL PHOTO</div>
+            <div class="screenshot-desc">Place <code>assets/example4-excedrin.jpg</code> in your assets folder</div>
+          </div>
+        </div>
+
+        <div class="output-block">DECISION: 🚫 DO NOT TAKE
+
+PRODUCT: Tylenol Regular Strength (added to existing Excedrin)
+ACTIVE INGREDIENTS: Acetaminophen 325mg
+
+REASON: Excedrin Extra Strength already contains 250mg of acetaminophen
+per tablet. Adding Tylenol risks exceeding 3,000mg/day — the safe daily
+limit for patients over 65. Excedrin also contains aspirin (an NSAID),
+which carries separate bleeding risk for patients on anticoagulants.
+
+ACTION: Do not add Tylenol to an Excedrin dose. Ask the physician to
+prescribe a single pain reliever with a defined daily limit.
+━━━ SCAN LOG ENTRY ━━━
+Date      : 2026-06-12 13:47
+Patient   : Margaret Chen
+Product   : Tylenol added to existing Excedrin
+Ingredients: Acetaminophen 325mg (added) + 250mg from Excedrin = overlap
+Decision  : 🚫 DO NOT TAKE
+Reason    : Total acetaminophen risk — daily 3,000mg limit for 65+
+Profile updated : 2026-05-29
+━━━━━━━━━━━━━━━━━━━━━</div>
+      </div>
+
+      <!-- Example 5 -->
+      <p class="sec-label">Example 5 — Stale Profile After Hospitalization</p>
+
+      <div class="section">
+        <p><strong>Situation:</strong> Patient was hospitalized 3 days ago. Her doctor switched her from warfarin to apixaban and increased her furosemide. The caregiver hasn't updated the profile yet. Profile is 22 days old. Caregiver photographs Advil.</p>
+
+        <div class="label-img-wrap">
+          <img class="label-img"
+               src="assets/example5-ADVIL.jpeg"
+               alt="Advil label — Ibuprofen 200mg"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='none'; this.parentElement.querySelector('.screenshot-placeholder').style.display='block'">
+          <div class="label-img-caption">Advil · Ibuprofen 200mg (NSAID)</div>
+          <div class="screenshot-placeholder" style="display:none">
+            <div class="screenshot-label">ADD LABEL PHOTO</div>
+            <div class="screenshot-desc">Place <code>assets/example5-advil.jpg</code> in your assets folder</div>
+          </div>
+        </div>
+
+        <div class="output-block">DECISION: 🚫 DO NOT TAKE
+
+PRODUCT: Advil
+ACTIVE INGREDIENTS: Ibuprofen 200mg
+
+REASON: Profile lists warfarin. NSAIDs with anticoagulants carry major
+bleeding risk and can destabilize INR.
+
+ACTION: Use regular Tylenol for pain instead. No NSAID while on
+anticoagulant therapy.
+
+⚠️ PROFILE STATUS: Last updated 22 days ago — exceeds the 14-day
+check interval. Verify all medications are still current.
+
+If the patient had a hospital stay or doctor visit since this profile
+was last updated, confirm prescriptions before acting on this decision.
+━━━ SCAN LOG ENTRY ━━━
+Date      : 2026-06-12 16:08
+Patient   : Margaret Chen
+Product   : Advil
+Ingredients: Ibuprofen 200mg
+Decision  : 🚫 DO NOT TAKE
+Reason    : NSAID + anticoagulant (warfarin per profile) — bleeding risk
+Profile updated : 2026-05-29  ⚠️ STALE — 22 days
+━━━━━━━━━━━━━━━━━━━━━</div>
+
+        <div class="callout callout-amber">
+          <div class="callout-label">Why This Is the Most Dangerous Scenario</div>
+          <p>The decision (DO NOT TAKE) is correct — apixaban, the new drug, carries the same NSAID interaction as warfarin. But the profile didn't know about the switch. If the hospitalization had added a new drug that creates an interaction not in the old profile, SentinelRx would have missed it. The staleness warning is the only safety net here. Update the profile the same day your patient is discharged.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         DISCLAIMER
+    ══════════════════════════════════════════════ -->
+    <section class="tab-pane" id="tab-disclaimer" role="tabpanel">
+
+      <div class="disclaimer-box">
+        <p class="sec-label sec-label-amber">United States Only — Do Not Use Outside the US</p>
+
+        <p style="font-size: 19px; font-weight: 600; color: var(--text-primary); margin-bottom: 1.2rem;">SentinelRx is built exclusively on United States regulatory standards. It is not valid for any other country.</p>
+
+        <p>SentinelRx's decision logic is grounded in the <strong>American Geriatrics Society (AGS) Beers Criteria® 2023</strong> — a US-specific clinical guideline for potentially inappropriate medication use in older adults. All drug classifications, interaction risks, dosing thresholds, and escalation rules in this operator are derived from US regulatory sources.</p>
+
+        <p>The following vary significantly between countries and are not accounted for in SentinelRx:</p>
+
+        <ul style="padding-left: 1.4rem; color: var(--text-secondary); line-height: 2.2; margin-bottom: 1rem;">
+          <li>Drug approval status — medications available OTC in the US may be prescription-only elsewhere, and vice versa</li>
+          <li>Active ingredient formulations — brand names may contain different compounds or doses in different markets</li>
+          <li>Approved dosing ranges — what is a standard adult dose in the US may differ in other countries</li>
+          <li>Regulatory classification of risk — a drug classified as high-risk by the US FDA may be classified differently by EMA, Health Canada, TGA, or other agencies</li>
+          <li>Available alternatives — safe substitutes recommended by SentinelRx may not be available in other countries</li>
+        </ul>
+      </div>
+
+      <div class="callout callout-amber">
+        <div class="callout-label">Specific Risk for Non-US Users</div>
+        <p>Using SentinelRx for patients outside the United States may produce decisions that are incorrect, inapplicable, or actively misleading for that patient's actual medication context. A DO NOT TAKE decision may be based on an interaction that does not apply to the version of the drug available in your country. A SAFE TO TAKE decision may miss a risk that exists in your country's formulation. <strong>Do not use SentinelRx outside the United States.</strong></p>
+      </div>
+
+      <div class="divider"></div>
+      <p class="sec-label sec-label-amber">Medical Disclaimer</p>
+
+      <div class="section">
+        <p>SentinelRx is a decision-support tool, not a licensed medical or pharmacy service. It applies encoded rules derived from published clinical guidelines to a stored patient profile. It does not replace the judgment of a licensed pharmacist or physician.</p>
+
+        <p>SentinelRx <strong>always</strong> recommends consulting a pharmacist or physician when:</p>
+        <ul style="padding-left: 1.4rem; color: var(--text-secondary); line-height: 2.2; margin-bottom: 1rem;">
+          <li>The product label is incomplete, illegible, or unusually complex</li>
+          <li>The interaction is novel or outside the encoded rule set</li>
+          <li>The patient's condition has recently changed</li>
+          <li>Any doubt exists about the correctness of the stored patient profile</li>
+        </ul>
+
+        <p>When SentinelRx returns <span class="badge badge-call">📞 CALL PHARMACIST FIRST</span>, that instruction is not a hedge — it is the decision. Do not override it.</p>
+      </div>
+
+      <div class="divider"></div>
+      <p class="sec-label sec-label-amber">Known Failure Modes</p>
+
+      <div class="section">
+        <p>SentinelRx is designed to escalate rather than guess in these situations. These are not bugs — they are explicit design choices:</p>
+
+        <table>
+          <thead>
+            <tr><th>Situation</th><th>What SentinelRx does</th><th>Why</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Active ingredient list is incomplete or illegible</td><td>📞 CALL PHARMACIST FIRST</td><td>A partial assessment is worse than no assessment</td></tr>
+            <tr><td>Combination product with more than 4 active ingredients</td><td>📞 CALL PHARMACIST FIRST</td><td>Interaction complexity exceeds reliable rule coverage</td></tr>
+            <tr><td>Unrecognized ingredient not in the rule set</td><td>📞 CALL PHARMACIST FIRST</td><td>Cannot assess what it cannot identify</td></tr>
+            <tr><td>Patient profile not updated after hospitalization</td><td>Staleness warning appended to output</td><td>The profile may not reflect current prescriptions — caregiver must verify</td></tr>
+          </tbody>
+        </table>
+
+        <p>In all four cases: a wrong confident answer is more dangerous than a correct escalation to a professional.</p>
+      </div>
+
+      <div class="divider"></div>
+      <p class="sec-label sec-label-amber">Regulatory Source</p>
+
+      <div class="section">
+        <p>All decision logic in SentinelRx is grounded in:</p>
+        <p><strong>American Geriatrics Society 2023 updated AGS Beers Criteria® for Potentially Inappropriate Medication Use in Older Adults.</strong> J Am Geriatr Soc. 2023. Published by the American Geriatrics Society. Available at <a href="https://www.americangeriatrics.org" target="_blank">americangeriatrics.org</a>.</p>
+        <p>The Beers Criteria is updated approximately every 3 years. SentinelRx should be reviewed and updated when a new version is published. The current version encoded in this operator is the <strong>2023 update</strong>.</p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    SentinelRx &nbsp;·&nbsp; XVI Health Intelligence &nbsp;·&nbsp; United States Only &nbsp;·&nbsp; AGS Beers Criteria® 2023 &nbsp;·&nbsp; 2026
+  </footer>
+
+  <!-- ═══ TAB LOGIC ═══ -->
+  <script>
+    function switchTab(tabName) {
+      const buttons = document.querySelectorAll('.tab-btn');
+      const panes   = document.querySelectorAll('.tab-pane');
+
+      buttons.forEach(b => b.classList.remove('active'));
+      panes.forEach(p => p.classList.remove('active'));
+
+      const btn  = document.querySelector(`[data-tab="${tabName}"]`);
+      const pane = document.getElementById(`tab-${tabName}`);
+
+      if (btn && pane) {
+        btn.classList.add('active');
+        pane.classList.add('active');
+        window.scrollTo({ top: 72, behavior: 'smooth' });
+      }
+    }
+
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+    });
+  </script>
+
+</body>
+</html>
