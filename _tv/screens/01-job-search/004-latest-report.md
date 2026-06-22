@@ -3,7 +3,7 @@ id: 004-latest-report
 title: Latest Search Report
 type: interactive
 stage: 1
-source: stages/01-job-search/output/job-search-2026-06-20.md
+source: stages/01-job-search/output/job-search-2026-06-22.md
 ---
 <div class="dashboard-wrapper">
   <style>
@@ -42,10 +42,10 @@ source: stages/01-job-search/output/job-search-2026-06-20.md
     
     .tab-bar {
       display: flex;
-      border-b: 1px solid var(--border-dark);
+      border-bottom: 1px solid var(--border-dark);
       margin-bottom: 12px;
       gap: 4px;
-      shrink-0: 0;
+      flex-shrink: 0;
     }
     
     .tab-btn {
@@ -94,7 +94,7 @@ source: stages/01-job-search/output/job-search-2026-06-20.md
     }
     
     .role-title {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 700;
       margin: 0 0 4px 0;
       color: #fff;
@@ -249,25 +249,25 @@ source: stages/01-job-search/output/job-search-2026-06-20.md
   </style>
 
   <div class="tab-bar">
-    <button class="tab-btn active" id="btn-0" onclick="showTab(0)">Cint — Supply API</button>
-    <button class="tab-btn" id="btn-1" onclick="showTab(1)">Ebury — API Connectivity</button>
-    <button class="tab-btn" id="btn-2" onclick="showTab(2)">Ebury — API Platform</button>
+    <button class="tab-btn active" id="btn-0" onclick="showTab(0)">Stripe — Ecosystem Risk</button>
+    <button class="tab-btn" id="btn-1" onclick="showTab(1)">Stripe — Local Acquiring</button>
+    <button class="tab-btn" id="btn-2" onclick="showTab(2)">Stripe — EMEA Payments</button>
   </div>
 
-  <!-- TAB 0: Cint -->
+  <!-- TAB 0: Stripe Ecosystem Risk -->
   <div class="content-panel" id="panel-0">
     <div class="role-header">
       <div>
-        <h3 class="role-title">Senior Product Manager – Supply API</h3>
+        <h3 class="role-title">Product Manager – Ecosystem Risk</h3>
         <div class="role-meta">
-          <span class="meta-item">Company: <strong>Cint</strong></span>
+          <span class="meta-item">Company: <strong>Stripe</strong></span>
           <span class="meta-item">Location: <strong>Remote (UK)</strong></span>
-          <span class="meta-item">Salary: <strong>£100k–£120k GBP (est.)</strong></span>
+          <span class="meta-item">Salary: <strong>£110k–£130k GBP (est.)</strong></span>
           <span class="meta-item">Freshness: <strong>Confirmed (within 6 days)</strong></span>
         </div>
       </div>
       <div>
-        <button class="action-btn" onclick="startPrep('cint-senior-pm-supply-api')">Prep for Role</button>
+        <button class="action-btn" onclick="startPrep('stripe-ecosystem-risk')">Prep for Role</button>
       </div>
     </div>
 
@@ -275,15 +275,15 @@ source: stages/01-job-search/output/job-search-2026-06-20.md
       <div class="info-card">
         <h4>Strong Signals</h4>
         <ul class="signals-list">
-          <li><strong>API-first / Developer-Facing</strong>: Directly owns programmatic Exchange supply APIs</li>
-          <li><strong>Infrastructure layer</strong>: Manages high-throughput marketplace integration</li>
-          <li><strong>Technical complexity</strong>: High-density API design, versioning policy, developer SDK/sandboxes</li>
-          <li><strong>Way of Working</strong>: True remote-first UK alignment</li>
+          <li><strong>API-first / Developer-Facing</strong>: APIs & UI surfaces for risk management and fraud case reviews</li>
+          <li><strong>Technical complexity</strong>: AI-powered risk modeling & custom controls</li>
+          <li><strong>Infrastructure layer</strong>: Protecting the integrity of Stripe's transactional network</li>
+          <li><strong>Way of Working</strong>: Fully Remote (UK) - ideal alignment</li>
         </ul>
       </div>
       <div class="info-card">
         <h4>Weak Signals & Flags</h4>
-        <p style="margin: 0; color: var(--text-muted);">None detected. This role matches all filters and way-of-working criteria perfectly.</p>
+        <p style="margin: 0; color: var(--text-muted);">None detected. Matches way of working and seniority targets perfectly.</p>
       </div>
     </div>
 
@@ -300,28 +300,22 @@ source: stages/01-job-search/output/job-search-2026-06-20.md
         </thead>
         <tbody>
           <tr>
-            <td>"Deep understanding of API design principles, versioning, change management, developer contracts"</td>
-            <td>Run SWIFT external API design governance, structuring standards across multiple product divisions.</td>
+            <td>"Defining the multi-year strategy for AI-powered financial crime controls: detection, investigation, collection"</td>
+            <td>Proposed and built Metro Bank's PSD2 fallback tracking APIs to validate and monitor screen scraping traffic patterns under FCA rules.</td>
             <td><span class="pill strong">Strong</span></td>
-            <td>Focus on governance over massive enterprise surfaces and API lifecycle frameworks.</td>
+            <td>Frame scraping traffic analysis and credentials validation as foundational transactional risk detection controls.</td>
           </tr>
           <tr>
-            <td>"Proven experience in managing full Developer Experience (DX): sandbox, documentation, integration tools"</td>
-            <td>Outlined vision and managed supplier delivery for Metro Bank’s Open Banking developer portal and sandboxes.</td>
+            <td>"Developing the core infrastructure and APIs/UI surfaces that power Stripe's risk tools"</td>
+            <td>Apigee certified platform architect. Built Open Banking security gate structures (OAuth/OpenID Hybrid Flow) and developer portals.</td>
             <td><span class="pill strong">Strong</span></td>
-            <td>Highlight user-centered design approach applied to sandboxes and developer portals.</td>
+            <td>Focus on experience translating high-stakes security/compliance mandates into developer portals and backend policies.</td>
           </tr>
           <tr>
-            <td>"Hands-on software engineering experience is strongly preferred"</td>
-            <td>Twice certified Apigee engineer. Line-managed developers, managed CI/CD build scripts (gulp/Jenkins), but did not write production backend code.</td>
+            <td>"Significant experience in financial crimes or fraud prevention within financial services"</td>
+            <td>Regulated banking infrastructure at Metro Bank and SWIFT (delivering pilot standards, eIDAS integrations, ISO 20022 formats).</td>
             <td><span class="pill partial">Partial</span></td>
-            <td>Bridge by showing deep technical fluency in API gateway architecture, DevOps automation, and BDD test design.</td>
-          </tr>
-          <tr>
-            <td>"Experience in ResTech, AdTech, or other programmatic marketplaces is a plus"</td>
-            <td>Worked on high-scale international payments infrastructure (SWIFT) and Open Banking specs (Metro Bank).</td>
-            <td><span class="pill partial">Partial</span></td>
-            <td>Highlight structural similarities between high-throughput financial clearance queues and programmatic marketplaces.</td>
+            <td>Bridge by highlighting credentials authentication, network security rules, and auditability configurations rather than modeling fraud logic directly.</td>
           </tr>
         </tbody>
       </table>
@@ -339,49 +333,44 @@ source: stages/01-job-search/output/job-search-2026-06-20.md
         </thead>
         <tbody>
           <tr>
-            <td><strong>API Design & Versioning</strong></td>
+            <td><strong>Risk Infrastructure</strong></td>
             <td><span class="pill usable">Usable</span></td>
-            <td>Directly ran design governance at SWIFT, setting standards for multi-bank APIs.</td>
+            <td>Created tracking mechanisms for scraping clients in banking architecture.</td>
           </tr>
           <tr>
-            <td><strong>Developer Experience (DX)</strong></td>
-            <td><span class="pill usable">Usable</span></td>
-            <td>Delivered developer portals and sandboxes at both Metro Bank and SWIFT.</td>
-          </tr>
-          <tr>
-            <td><strong>Software Engineering</strong></td>
+            <td><strong>Financial Crime & Fraud</strong></td>
             <td><span class="pill caveat">Caveat</span></td>
-            <td>Frame as a technical-first PM with architecture certifications (Apigee) and script automation knowledge.</td>
+            <td>Focus on identity management (eIDAS certificates), OAuth, and compliance controls.</td>
           </tr>
           <tr>
-            <td><strong>Programmatic Exchange</strong></td>
+            <td><strong>AI Integration</strong></td>
             <td><span class="pill caveat">Caveat</span></td>
-            <td>Draw parallels to high-volume transaction routing and ledger settlement networks at SWIFT.</td>
+            <td>Bridge to event logging, data pipelines, and telemetry analysis.</td>
           </tr>
           <tr>
-            <td><strong>B2B Product Management</strong></td>
+            <td><strong>Cross-Functional Scale</strong></td>
             <td><span class="pill usable">Usable</span></td>
-            <td>Managed corporate treasury pilot programs and partner-vendor integrations.</td>
+            <td>Led global SWIFT workgroups (10 banks, 10 major corporates, and vendors).</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <!-- TAB 1: Ebury Staff PM -->
+  <!-- TAB 1: Stripe Local Acquiring -->
   <div class="content-panel" id="panel-1" style="display:none">
     <div class="role-header">
       <div>
-        <h3 class="role-title">Staff Product Manager – API Connectivity</h3>
+        <h3 class="role-title">Product Manager – Local Processor Acquiring</h3>
         <div class="role-meta">
-          <span class="meta-item">Company: <strong>Ebury</strong></span>
-          <span class="meta-item">Location: <strong>London (Hybrid)</strong></span>
-          <span class="meta-item">Salary: <strong>£110k–£120k GBP (est.)</strong></span>
+          <span class="meta-item">Company: <strong>Stripe</strong></span>
+          <span class="meta-item">Location: <strong>London, UK (Hybrid)</strong></span>
+          <span class="meta-item">Salary: <strong>£110k–£130k GBP (est.)</strong></span>
           <span class="meta-item">Freshness: <strong>Confirmed (within 6 days)</strong></span>
         </div>
       </div>
       <div>
-        <button class="action-btn" onclick="startPrep('ebury-staff-pm-api-connectivity')">Prep for Role</button>
+        <button class="action-btn" onclick="startPrep('stripe-local-processor-acquiring')">Prep for Role</button>
       </div>
     </div>
 
@@ -389,126 +378,9 @@ source: stages/01-job-search/output/job-search-2026-06-20.md
       <div class="info-card">
         <h4>Strong Signals</h4>
         <ul class="signals-list">
-          <li><strong>API-first / Developer-Facing</strong>: ERP and accounting connectivity domain</li>
-          <li><strong>Infrastructure layer</strong>: Ebury global financial core rails</li>
-          <li><strong>Technical complexity</strong>: Sync patterns, OAuth, webhooks, reconciliation structures</li>
-          <li><strong>Domain alignment</strong>: Direct fintech/payments ecosystem match</li>
-        </ul>
-      </div>
-      <div class="info-card">
-        <h4>Weak Signals & Flags</h4>
-        <div>
-          <span class="flag-pill">⚠️ Hybrid Working Model</span>
-          <p style="margin: 6px 0 0; font-size: 11.5px; color: var(--text-muted);">Requires 4 days in-office in London. This is a significant variance from the remote-first preference in configuration.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="section-title">Matches & Gaps Analysis</div>
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th style="width: 25%">Requirement / JD Quote</th>
-            <th style="width: 35%">Candidate Fit Evidence</th>
-            <th style="width: 10%">Fit Level</th>
-            <th style="width: 30%">Bridge Strategy / Comments</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>"Define vision, roadmap, and metrics for ERP connectivity... make build vs. buy decisions"</td>
-            <td>Led corporate cash reporting API pilots at SWIFT, structuring partner vendor integrations and roadmap.</td>
-            <td><span class="pill strong">Strong</span></td>
-            <td>Position SWIFT's corporate-to-bank channel as a massive multi-bank integration project.</td>
-          </tr>
-          <tr>
-            <td>"Translate business requirements to clear technical API specs... work with backend engineering"</td>
-            <td>18+ years translating payment specs (ISO 20022 and PSD2) into developer endpoints and gateway code.</td>
-            <td><span class="pill strong">Strong</span></td>
-            <td>Point to experience bridging bank architectures with practical developer APIs.</td>
-          </tr>
-          <tr>
-            <td>"Experience with ERP/accounting software (Codat, Merge, Apideck, Sage, QuickBooks, NetSuite)"</td>
-            <td>Enterprise integration patterns (SAP integration with retail/e-commerce) at KAO UK / Molton Brown.</td>
-            <td><span class="pill partial">Partial</span></td>
-            <td>Frame SWIFT and PSD2 endpoints as financial data mappings structurally identical to ERP formats.</td>
-          </tr>
-          <tr>
-            <td>"Familiarity with OAuth, webhooks, data sync models, reconciliation processes"</td>
-            <td>Delivered Open Banking OAuth/OpenID Hybrid Flow profiles at Metro Bank. cash reporting APIs at SWIFT.</td>
-            <td><span class="pill strong">Strong</span></td>
-            <td>Demonstrate absolute competence in payment security standards and ledger sync workflows.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="section-title">ATS Keyword Mapping</div>
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th style="width: 25%">ATS Keyword</th>
-            <th style="width: 15%">Classification</th>
-            <th style="width: 60%">Evidence & Framing Suggestion</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>ERP Integration</strong></td>
-            <td><span class="pill usable">Usable</span></td>
-            <td>Integrated retail/SAP ERPs during brand consolidation at KAO UK.</td>
-          </tr>
-          <tr>
-            <td><strong>API Specifications</strong></td>
-            <td><span class="pill usable">Usable</span></td>
-            <td>Authored Open Banking specs at Metro Bank and API designs at SWIFT.</td>
-          </tr>
-          <tr>
-            <td><strong>OAuth</strong></td>
-            <td><span class="pill usable">Usable</span></td>
-            <td>Delivered PSD2 security profiling with OAuth 2.0 at Metro Bank.</td>
-          </tr>
-          <tr>
-            <td><strong>Codat / Merge / Apideck</strong></td>
-            <td><span class="pill caveat">Caveat</span></td>
-            <td>Frame multi-bank integration channels as similar programmatic aggregation patterns.</td>
-          </tr>
-          <tr>
-            <td><strong>Fintech / Payments</strong></td>
-            <td><span class="pill usable">Usable</span></td>
-            <td>Direct career depth across SWIFT network and regulated UK open banking systems.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- TAB 2: Ebury Senior PM -->
-  <div class="content-panel" id="panel-2" style="display:none">
-    <div class="role-header">
-      <div>
-        <h3 class="role-title">Senior Product Manager – API Platform</h3>
-        <div class="role-meta">
-          <span class="meta-item">Company: <strong>Ebury</strong></span>
-          <span class="meta-item">Location: <strong>London (Hybrid)</strong></span>
-          <span class="meta-item">Salary: <strong>£110k–£120k GBP (est.)</strong></span>
-          <span class="meta-item">Freshness: <strong>Confirmed (within 6 days)</strong></span>
-        </div>
-      </div>
-      <div>
-        <button class="action-btn" onclick="startPrep('ebury-senior-pm-api-platform')">Prep for Role</button>
-      </div>
-    </div>
-
-    <div class="grid-2">
-      <div class="info-card">
-        <h4>Strong Signals</h4>
-        <ul class="signals-list">
-          <li><strong>API-first / Developer-Facing</strong>: Evolving Ebury core API platform and endpoints</li>
-          <li><strong>Infrastructure layer</strong>: Ebury core payments routing, gateway architecture</li>
-          <li><strong>Technical complexity</strong>: REST/GraphQL, OAuth, webhooks, retries, idempotency</li>
+          <li><strong>API-first / Developer-Facing</strong>: Integrations with global local processors</li>
+          <li><strong>Technical complexity</strong>: Distributed systems, money flows, schema translation</li>
+          <li><strong>Infrastructure layer</strong>: Stripe global payment clearing network rails</li>
           <li><strong>Domain alignment</strong>: Direct fintech/payments domain match</li>
         </ul>
       </div>
@@ -516,7 +388,7 @@ source: stages/01-job-search/output/job-search-2026-06-20.md
         <h4>Weak Signals & Flags</h4>
         <div>
           <span class="flag-pill">⚠️ Hybrid Working Model</span>
-          <p style="margin: 6px 0 0; font-size: 11.5px; color: var(--text-muted);">Requires 4 days in-office in London. This is a significant variance from the remote-first preference in configuration.</p>
+          <p style="margin: 6px 0 0; font-size: 11.5px; color: var(--text-muted);">Requires consistent London office presence (deviates from preferred remote-first work model).</p>
         </div>
       </div>
     </div>
@@ -534,28 +406,28 @@ source: stages/01-job-search/output/job-search-2026-06-20.md
         </thead>
         <tbody>
           <tr>
-            <td>"Define and evolve API endpoints, webhooks, error models, and data contracts to ensure consistency and ease of integration"</td>
-            <td>Established and ran API design governance across all SWIFT external API interfaces. Designed Metro Bank’s API operating model.</td>
+            <td>"Own and drive the end-to-end product strategy... across multiple markets"</td>
+            <td>Led corporate cash reporting API pilots at SWIFT, bringing together 10 banks, 10 corporates, and 4 treasury vendors.</td>
             <td><span class="pill strong">Strong</span></td>
-            <td>Highlight governance framework and developer portals designed to standardize API quality.</td>
+            <td>Show capacity to drive multi-stakeholder integration roadmaps and partner delivery.</td>
           </tr>
           <tr>
-            <td>"Partner with engineering teams on API design, best practices, authentication flows, and technical trade-offs (e.g. retries, idempotency)"</td>
-            <td>Line managed 6 developers. Twice certified on Google Cloud/Apigee API Gateways. Managed route-to-live and controls.</td>
+            <td>"Technical fluency: comfort reading code, engaging in architectural decisions, money flows"</td>
+            <td>Apigee certified platform architect. Engineered DevOps pipelines and automated test structures. Managed team of 6 developers.</td>
             <td><span class="pill strong">Strong</span></td>
-            <td>Position Apigee gateway certifications and technical controls (rate limits, security tokens) as evidence of platform depth.</td>
+            <td>Highlight deep technical comfort with gateway configurations, traffic routing, and message translation.</td>
           </tr>
           <tr>
-            <td>"OAuth 2.0, API keys, authentication models, event-driven systems"</td>
-            <td>Delivered Metro Bank’s Open Banking security infrastructure using OAuth and OpenID Hybrid Flow with eIDAS.</td>
-            <td><span class="pill strong">Strong</span></td>
-            <td>Showcase deep expertise in authorization models for highly-secured financial services.</td>
+            <td>"Experience with local payment methods or regional processor APIs"</td>
+            <td>Directed UK Open Banking integrations (PSD2 specs) and international bank-to-corporate message routing (SWIFT).</td>
+            <td><span class="pill partial">Partial</span></td>
+            <td>Bridge by showing how ISO 20022 mapping and Open Banking specifications form a global standard applicable to any local processor.</td>
           </tr>
           <tr>
-            <td>"Previous experience in fintech, payments, FX, or financial infrastructure is highly desirable"</td>
-            <td>8+ years at SWIFT and Metro Bank delivering cash reporting, trade finance, and Open Banking APIs.</td>
+            <td>"Proficiency in SQL is required to analyze funnels and partner performance"</td>
+            <td>Strong database and data mapping background from KAO UK integrations and SWIFT data governance.</td>
             <td><span class="pill strong">Strong</span></td>
-            <td>Direct fintech/financial infrastructure match matching payments and clearing systems.</td>
+            <td>Showcase ability to query, map, and instrument payment transactions to analyze conversion rates.</td>
           </tr>
         </tbody>
       </table>
@@ -573,29 +445,130 @@ source: stages/01-job-search/output/job-search-2026-06-20.md
         </thead>
         <tbody>
           <tr>
-            <td><strong>API Platform / Gateway</strong></td>
+            <td><strong>Payment Acquiring</strong></td>
             <td><span class="pill usable">Usable</span></td>
-            <td>Apigee certified. Ran selection and implementation of Apigee at Metro Bank and KAO.</td>
+            <td>Owned API platform (Apigee) and PSD2 core payments rails at Metro Bank.</td>
           </tr>
           <tr>
-            <td><strong>API Design & Governance</strong></td>
+            <td><strong>Distributed Systems</strong></td>
             <td><span class="pill usable">Usable</span></td>
-            <td>Led governance boards and API design reviews across all SWIFT product APIs.</td>
+            <td>Twice certified Apigee Gateway Architect. Designed secure, high-scale routing routes-to-live.</td>
           </tr>
           <tr>
-            <td><strong>OAuth 2.0 / Security</strong></td>
-            <td><span class="pill usable">Usable</span></td>
-            <td>Designed and delivered secure authorization flow patterns for Open Banking v1 at Metro Bank.</td>
+            <td><strong>Local Payment Methods</strong></td>
+            <td><span class="pill caveat">Caveat</span></td>
+            <td>Showcase UK Open Banking v1 specifications and SWIFT cash channels, framing as highly transferable global transaction standards.</td>
           </tr>
           <tr>
-            <td><strong>Developer Experience (DX)</strong></td>
+            <td><strong>SQL & Data Mapping</strong></td>
             <td><span class="pill usable">Usable</span></td>
-            <td>Built developer portal and sandbox infrastructure for SWIFT and Metro Bank.</td>
+            <td>18+ years doing enterprise data integration and mapping schemas (SAP, ISO 20022).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TAB 2: Stripe EMEA Payments -->
+  <div class="content-panel" id="panel-2" style="display:none">
+    <div class="role-header">
+      <div>
+        <h3 class="role-title">Product Manager – EMEA Payments Lead</h3>
+        <div class="role-meta">
+          <span class="meta-item">Company: <strong>Stripe</strong></span>
+          <span class="meta-item">Location: <strong>London, UK (Hybrid)</strong></span>
+          <span class="meta-item">Salary: <strong>£120k–£140k GBP (est.)</strong></span>
+          <span class="meta-item">Freshness: <strong>Confirmed (within 6 days)</strong></span>
+        </div>
+      </div>
+      <div>
+        <button class="action-btn" onclick="startPrep('stripe-emea-payments-lead')">Prep for Role</button>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="info-card">
+        <h4>Strong Signals</h4>
+        <ul class="signals-list">
+          <li><strong>API-first / Developer-Facing</strong>: Designing high-quality, reliable payments endpoints</li>
+          <li><strong>Technical complexity</strong>: High reliability requirements, orchestration, latency controls</li>
+          <li><strong>Infrastructure layer</strong>: Core payment processing capabilities across EMEA region</li>
+          <li><strong>Domain alignment</strong>: Direct payments/Open Banking match</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>Weak Signals & Flags</h4>
+        <div>
+          <span class="flag-pill">⚠️ Hybrid Working Model</span>
+          <p style="margin: 6px 0 0; font-size: 11.5px; color: var(--text-muted);">Requires consistent London office presence (deviates from preferred remote-first work model).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Matches & Gaps Analysis</div>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 25%">Requirement / JD Quote</th>
+            <th style="width: 35%">Candidate Fit Evidence</th>
+            <th style="width: 10%">Fit Level</th>
+            <th style="width: 30%">Bridge Strategy / Comments</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>"Enforce high standards for API design, system reliability, and user experience"</td>
+            <td>Led API design governance across all SWIFT external API surfaces and authored Metro Bank’s API Delivery Operating Model.</td>
+            <td><span class="pill strong">Strong</span></td>
+            <td>Leverage extensive experience defining and enforcing global API quality standards.</td>
           </tr>
           <tr>
-            <td><strong>Technical Trade-offs</strong></td>
+            <td>"Existing knowledge of the payments landscape (e.g., payment orchestration or processing)"</td>
+            <td>Over 8 years at SWIFT and Metro Bank building international payments reporting and Open Banking specs.</td>
+            <td><span class="pill strong">Strong</span></td>
+            <td>Direct fintech/payments domain match.</td>
+          </tr>
+          <tr>
+            <td>"Shipping technical B2B2C products at high velocity, managing strategic partner relationships"</td>
+            <td>Led ICC working group trade finance API standardizations and SWIFT cash reporting pilots. Managed supplier delivery at Metro Bank.</td>
+            <td><span class="pill strong">Strong</span></td>
+            <td>Focus on partner and vendor management in high-stakes financial networks.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-title">ATS Keyword Mapping</div>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 25%">ATS Keyword</th>
+            <th style="width: 15%">Classification</th>
+            <th style="width: 60%">Evidence & Framing Suggestion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>API Design & Standards</strong></td>
             <td><span class="pill usable">Usable</span></td>
-            <td>Evaluated traffic-routing, retries, and API gateway logic in collaboration with engineers.</td>
+            <td>Established and maintained design review processes for all SWIFT external APIs.</td>
+          </tr>
+          <tr>
+            <td><strong>Payment Orchestration</strong></td>
+            <td><span class="pill usable">Usable</span></td>
+            <td>Designed PSD2 fallback architectures and multi-bank transactional endpoints.</td>
+          </tr>
+          <tr>
+            <td><strong>System Reliability</strong></td>
+            <td><span class="pill usable">Usable</span></td>
+            <td>Certified Apigee Gateway architect with focus on rate-limiting, error handling, and latency reduction.</td>
+          </tr>
+          <tr>
+            <td><strong>B2B Tech PM</strong></td>
+            <td><span class="pill usable">Usable</span></td>
+            <td>Led cross-organizational integrations with major treasury vendors, corporates, and global banks.</td>
           </tr>
         </tbody>
       </table>
@@ -607,30 +580,24 @@ source: stages/01-job-search/output/job-search-2026-06-20.md
 
 <script>
   function showTab(index) {
-    // Hide all panels
     document.getElementById('panel-0').style.display = 'none';
     document.getElementById('panel-1').style.display = 'none';
     document.getElementById('panel-2').style.display = 'none';
     
-    // Deactivate all buttons
     document.getElementById('btn-0').classList.remove('active');
     document.getElementById('btn-1').classList.remove('active');
     document.getElementById('btn-2').classList.remove('active');
     
-    // Activate clicked tab
     document.getElementById('panel-' + index).style.display = 'block';
     document.getElementById('btn-' + index).classList.add('active');
     
-    // Clear ACK
     document.getElementById('ack-msg').textContent = '';
   }
 
   function startPrep(slug) {
-    // Call the parent layout respond function to trigger Role Prep selection
     respond({ action: 'prep', roleSlug: slug });
   }
 
-  // Handle callback when response is acknowledged
   window.onResponded = function(e) {
     if (e.value && e.value.action === 'prep') {
       const formatted = e.value.roleSlug.replace(/-/g, ' ');

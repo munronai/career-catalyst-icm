@@ -4,6 +4,7 @@ title: Active Search Configuration
 type: card
 stage: 1
 source: _config/search-config.md
+updated: '2026-06-20T07:19:02'
 ---
 **Target Titles:** Senior PM, Staff PM, Lead PM, GPM, Principal PM, Head of Product.
 **Locations:** Remote UK, London.

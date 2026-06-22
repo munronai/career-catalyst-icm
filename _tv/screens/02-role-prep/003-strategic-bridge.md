@@ -3,7 +3,7 @@ id: 003-strategic-bridge
 title: Candidate Strategic Bridge
 type: card
 stage: 2
-updated: '2026-06-20T00:27:23'
+updated: '2026-06-20T07:55:58'
 ---
 ### Candidate Positioning (SWIFT & Metro Bank)
 *   **Outcome 1**: Governed SWIFT Community APIs, translating ISO standards into developer formats. Maps to Cint’s unified Exchange API governance.
