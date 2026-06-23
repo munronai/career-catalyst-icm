@@ -5,6 +5,9 @@ type: card
 stage: 3
 status: done
 ---
-**Selected Proposal Indices:** *None*
+**Active Builds (Experian):**
+- Proposal 1: **Self-Serve Partner Integration Wizard & UAT Sandbox**
+- Proposal 2: **No-Code Identity Workflow Orchestrator (Schema Mapper)**
+- Proposal 3: **Zero-Trust Tokenized Authorization Profiles**
 
-*The agent reads selections from `_tv/responses/02-role-prep/004-proposals-selection.md` to trigger the build.*
+*All 3 proposal folders have been successfully compiled in the workspace.*
