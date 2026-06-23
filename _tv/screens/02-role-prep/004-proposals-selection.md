@@ -6,20 +6,20 @@ stage: 2
 status: blocked
 ---
 <div style="font-family:system-ui, -apple-system, sans-serif;padding:12px;color:#1d1e1b">
-  <p style="margin:0 0 10px;font-size:13px;line-height:1.4"><b>Select which proposals to build into value-add packages for Cint:</b></p>
+  <p style="margin:0 0 10px;font-size:13px;line-height:1.4"><b>Select which proposals to build into value-add packages for Experian:</b></p>
   <form id="proposal-form" onsubmit="submitSelection(event)">
     <div id="proposal-list" style="margin-bottom:12px">
       <label style="display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;cursor:pointer;font-size:12px">
         <input type="checkbox" name="proposals" value="1" checked style="margin-top:2px">
-        <span><b>Proposal 1:</b> <span id="p1-text">Self-Serve Developer Portal & Sandbox Wizard</span></span>
+        <span><b>Proposal 1:</b> <span id="p1-text">Self-Serve Partner Integration Wizard & UAT Sandbox</span></span>
       </label>
       <label style="display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;cursor:pointer;font-size:12px">
         <input type="checkbox" name="proposals" value="2" style="margin-top:2px">
-        <span><b>Proposal 2:</b> <span id="p2-text">Webhook Integrity Framework ("Ghost Complete Shield")</span></span>
+        <span><b>Proposal 2:</b> <span id="p2-text">No-Code Identity Workflow Orchestrator (Schema Mapper)</span></span>
       </label>
       <label style="display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;cursor:pointer;font-size:12px">
         <input type="checkbox" name="proposals" value="3" style="margin-top:2px">
-        <span><b>Proposal 3:</b> <span id="p3-text">Unified Supply API SDK Wrappers</span></span>
+        <span><b>Proposal 3:</b> <span id="p3-text">Zero-Trust Tokenized Authorization Profiles</span></span>
       </label>
     </div>
     <div style="display:flex;gap:6px">

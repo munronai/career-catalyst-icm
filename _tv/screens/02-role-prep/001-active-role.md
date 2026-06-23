@@ -4,12 +4,12 @@ title: Active Target Role
 type: card
 stage: 2
 status: done
-source: stages/02-role-prep/output/2026-06-20-cint-senior-pm-supply-api.md
+source: stages/02-role-prep/output/2026-06-23-experian-senior-platform-pm-crosscore.md
 ---
-### Active Role: Senior Product Manager – Supply API
-- **Company**: Cint
-- **Location**: Remote (UK)
-- **Salary Target**: £100k–£120k GBP (est.)
-- **Report Date**: 2026-06-20
+### Active Role: Senior Platform Product Manager
+- **Company**: Experian (Identity & Fraud CrossCore)
+- **Location**: London (Hybrid)
+- **Salary Target**: £95k–£120k GBP (est.)
+- **Report Date**: 2026-06-23
 
 *Preparation report compiled. The active layout cards contain your reality check, strategic bridge, proposals, and tailored question bank.*

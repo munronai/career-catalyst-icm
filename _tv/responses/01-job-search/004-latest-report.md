@@ -1,4 +1,4 @@
 {
   "action": "prep",
-  "roleSlug": "cint-senior-pm-supply-api"
+  "roleSlug": "experian-senior-platform-pm-crosscore"
 }
