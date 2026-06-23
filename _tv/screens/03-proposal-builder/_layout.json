@@ -1,0 +1,18 @@
+{
+  "001-active-proposal": {
+    "x": 24,
+    "y": 24,
+    "w": 400,
+    "h": 220,
+    "z": 1,
+    "pinned": false
+  },
+  "002-deliverables": {
+    "x": 448,
+    "y": 24,
+    "w": 450,
+    "h": 420,
+    "z": 2,
+    "pinned": false
+  }
+}
