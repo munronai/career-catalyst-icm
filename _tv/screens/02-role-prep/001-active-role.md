@@ -4,12 +4,12 @@ title: Active Target Role
 type: card
 stage: 2
 status: done
-source: stages/02-role-prep/output/2026-06-23-experian-senior-platform-pm-crosscore.md
+source: stages/02-role-prep/output/2026-06-23-cohere-product-manager-integrations.md
 ---
-### Active Role: Senior Platform Product Manager
-- **Company**: Experian (Identity & Fraud CrossCore)
-- **Location**: London (Hybrid)
-- **Salary Target**: £95k–£120k GBP (est.)
+### Active Role: Product Manager, Integrations
+- **Company**: Cohere (AI Agent Platform North)
+- **Location**: Toronto / London / Remote UK
+- **Salary Target**: Not listed
 - **Report Date**: 2026-06-23
 
 *Preparation report compiled. The active layout cards contain your reality check, strategic bridge, proposals, and tailored question bank.*

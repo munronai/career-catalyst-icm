@@ -244,7 +244,8 @@ source: stages/01-job-search/output/job-search-2026-06-23.md
   </style>
 
   <div class="tab-bar">
-    <button class="tab-btn active" id="btn-0">Experian — CrossCore</button>
+    <button class="tab-btn active" id="btn-0" onclick="showTab(0)">Experian — CrossCore</button>
+    <button class="tab-btn" id="btn-1" onclick="showTab(1)">Cohere — PM Integrations</button>
   </div>
 
   <!-- TAB 0: Experian CrossCore -->
@@ -359,10 +360,139 @@ source: stages/01-job-search/output/job-search-2026-06-23.md
     </div>
   </div>
 
+  <!-- TAB 1: Cohere PM Integrations -->
+  <div class="content-panel" id="panel-1" style="display: none;">
+    <div class="role-header">
+      <div>
+        <h3 class="role-title">Product Manager, Integrations</h3>
+        <div class="role-meta">
+          <span class="meta-item">Company: <strong>Cohere</strong></span>
+          <span class="meta-item">Location: <strong>Toronto, Canada / London, UK / Remote</strong></span>
+          <span class="meta-item">Salary: <strong>Not listed</strong></span>
+          <span class="meta-item">Freshness: <strong>Confirmed (posted 2026-06-16)</strong></span>
+        </div>
+      </div>
+      <div>
+        <button class="action-btn" onclick="startPrep('cohere-pm-integrations')">Prep for Role</button>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="info-card">
+        <h4>Strong Signals</h4>
+        <ul class="signals-list">
+          <li><strong>API-first / Developer-Facing</strong>: Connectors, APIs, SDKs, plugin model, and docs for platform</li>
+          <li><strong>AI-native Company</strong>: Leading enterprise AI/foundation models developer</li>
+          <li><strong>Infrastructure & Platforms</strong>: Generic capabilities (connectors, auth, sync, tool-use)</li>
+          <li><strong>Technical complexity</strong>: High-stakes partner integrations and latency-aware architecture</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>Weak Signals & Flags</h4>
+        <div>
+          <span class="pill usable" style="background-color: var(--tag-green); color: var(--tag-green-text); font-weight: 700; text-transform: uppercase;">No Flags</span>
+          <p style="margin: 6px 0 0; font-size: 11.5px; color: var(--text-muted);">Fully aligns with platform focus, remote-first preferences, and technical depth.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Matches & Gaps Analysis</div>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 25%">Requirement / JD Quote</th>
+            <th style="width: 35%">Candidate Fit Evidence</th>
+            <th style="width: 10%">Fit Level</th>
+            <th style="width: 30%">Bridge Strategy / Comments</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>"5+ years in product management on platform / API, integrations, or developer / ecosystem products"</td>
+            <td>8+ years PM experience on platform & APIs at SWIFT (6 years) and Metro Bank (2.5 years).</td>
+            <td><span class="pill strong">Strong</span></td>
+            <td>Highlight SWIFT platform governance and Metro Bank Developer Portals.</td>
+          </tr>
+          <tr>
+            <td>"Derive generic, platform-level capabilities (connector framework, auth and identity, tool-use, data sync, permissioning) where they don't yet exist"</td>
+            <td>Designed security architectures (OAuth, OpenID Connect, eIDAS) and API Delivery Operating Models.</td>
+            <td><span class="pill strong">Strong</span></td>
+            <td>Showcase standardization of ISO 20022 schemas and API design governance.</td>
+          </tr>
+          <tr>
+            <td>"Define the developer and partner experience (APIs, SDKs, plugin model, docs) and instrument analytics"</td>
+            <td>Created sandboxes and Developer Portals (on Apigee) for Metro Bank; evangelized API channels with partners.</td>
+            <td><span class="pill strong">Strong</span></td>
+            <td>Point to Metro Bank Developer Portal launch and SmartBear/ION partner enablement webinars.</td>
+          </tr>
+          <tr>
+            <td>"Experience with AI-first product management"</td>
+            <td>Extensive platform/API history but lacks direct LLM/AI model lifecycle PM ownership.</td>
+            <td><span class="pill gap">Gap</span></td>
+            <td>Bridge by highlighting fast learning curve in scripting multi-agent systems and adjacent modular orchestrator architectures.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-title">ATS Keyword Mapping</div>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 25%">ATS Keyword</th>
+            <th style="width: 15%">Classification</th>
+            <th style="width: 60%">Evidence & Framing Suggestion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Ecosystem Strategy</strong></td>
+            <td><span class="pill usable">Usable</span></td>
+            <td>Led pilot programs involving 10 banks, 10 corporate partners, and 4 TMS vendor networks.</td>
+          </tr>
+          <tr>
+            <td><strong>Auth & Identity</strong></td>
+            <td><span class="pill usable">Usable</span></td>
+            <td>Implemented PSD2 Open Banking security specs with eIDAS certificate identity verification.</td>
+          </tr>
+          <tr>
+            <td><strong>API Standards / Developer Portal</strong></td>
+            <td><span class="pill usable">Usable</span></td>
+            <td>Established API governance models and technical content publishing pipelines.</td>
+          </tr>
+          <tr>
+            <td><strong>Agentic AI & LLMs</strong></td>
+            <td><span class="pill caveat">Caveat</span></td>
+            <td>Frame as active area of development, drawing analogies from rule engine orchestrators.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   <div id="ack-msg"></div>
 </div>
 
 <script>
+  function showTab(idx) {
+    document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+      if (i === idx) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+    document.querySelectorAll('.content-panel').forEach((panel, i) => {
+      if (i === idx) {
+        panel.style.display = 'block';
+      } else {
+        panel.style.display = 'none';
+      }
+    });
+  }
+
   function startPrep(slug) {
     respond({ action: 'prep', roleSlug: slug });
   }

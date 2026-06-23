@@ -4,6 +4,7 @@ title: Build Progress & Deliverables
 type: card
 stage: 3
 source: stages/03-proposal-builder/output/proposals/
+updated: '2026-06-23T11:46:42'
 ---
 ### Experian Pitch Packages
 Click the **Source** link in the footer to browse the output directory. Each proposal folder contains:
