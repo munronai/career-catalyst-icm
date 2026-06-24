@@ -5,11 +5,11 @@ type: card
 stage: 2
 ---
 ### Time Spend Allocation (80% Reality Check)
-- **40% Platform Connector Foundations**: Refining connector frameworks, SSO/OAuth authentication schemes, and generic tool-calling parameters.
-- **30% Developer Experience (DX) & Partner Onboarding**: Packaging SDKs (Cohere Toolkit), OpenAPI spec updates, and publishing developer docs.
-- **10% Client Workflows**: Partnering with strategic clients and field teams to map integration schemas.
+- **45% Data Ingestion & Governance**: Setting Delta Lake data contracts, schemas, and tracking lineage in Databricks.
+- **35% Agent Guardrails & Tool Access**: Modeling security profiles, MCP tool limits, and user-level permissions to prevent PII exposure.
+- **10% HITL Checkpoints & UX**: Reconciling priorities with tax experts and engineers to ensure auditable tax outputs.
 
 ### 3-6 Month Success Expectations
-- Reduce average "time-to-stand-up" for custom connectors to under **2 days**.
-- Drive **30% monthly active user growth** on Cohere North tool-calling endpoints.
-- Establish standardized **SSO/OAuth credential manager** across core SaaS platforms.
+- Establish data contracts for **3 core external databases** (SEC filings, regulations).
+- Build deterministic evaluation guardrails, reducing draft error rates by **35%**.
+- Reduce the onboarding time for custom practitioner tool integrations to **under 3 days**.

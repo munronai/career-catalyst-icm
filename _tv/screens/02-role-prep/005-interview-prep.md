@@ -6,10 +6,10 @@ stage: 2
 ---
 ### Key Questions & Coaching Notes
 
-#### 1. Hiring Manager (Director of Product, Cohere North)
-*   *Q:* How do you balance the roadmap between shipping custom connectors for strategic partners and building reusable, platform-level SDKs?
-*   *Note:* Testing ability to balance short-term revenue against long-term product scalability.
+#### 1. Hiring Manager (Director of Product, Agentic Platform)
+*   *Q:* Since tax compliance is zero-tolerance, how do you evaluate model hallucination risks for R&D tax classification before pushing changes to production?
+*   *Note:* Testing experience building robust AI evaluation guardrails and managing risk in regulated SaaS products.
 
-#### 2. Engineering Lead
-*   *Q:* With real-time tool calling on enterprise systems, how do we handle backend API latency spikes or timeouts without breaking the agentic planning loop?
-*   *Note:* Testing technical depth in fault tolerance, circuit breakers, and async agent execution.
+#### 2. Engineering Lead (Principal AI/Data Engineers)
+*   *Q:* How do you enforce schema contracts on Delta Lake tables dynamically at ingestion time, and how do we handle pipeline failures when external regulatory feeds change their structure?
+*   *Note:* Testing engineering credibility, data validation techniques, and operational pipeline resilience.

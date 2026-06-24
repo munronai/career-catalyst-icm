@@ -5,6 +5,6 @@ type: card
 stage: 2
 ---
 ### Candidate Positioning (SWIFT & Metro Bank)
-*   **Outcome 1**: Governed SWIFT external APIs and cash reporting pilots. Maps directly to defining the Cohere North integration ecosystem.
-*   **Outcome 2**: Built Metro Bank's developer portal and UAT sandboxes. Direct blueprint for Cohere's developer SDK, docs, and plugin model.
-*   **Outcome 3**: Designed Open Banking security models (OAuth 2.0, OpenID OIDC). Secures Cohere North's connector authentication and data sync brokers.
+*   **Outcome 1**: Led SWIFT cash reporting pilots and API design governance. Directly maps to managing medallion table data contracts and Delta Lake lineage at Exactera.
+*   **Outcome 2**: Launched Metro Bank's developer portals and sandboxes. Direct blueprint for Exactera's visual practitioner tool-simulation sandboxes.
+*   **Outcome 3**: Implemented Open Banking security specs (OAuth 2.0, OpenID). Secures Exactera's agentic access surface and user-level tool permissions.
